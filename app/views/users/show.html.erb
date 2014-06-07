@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+
+# Will show the real size picture
+<%= image_tag @user.selfie.url %>
+<br/>
+# Will the style MEDIUM configured before
+# in your model
+<%= image_tag @user.selfie.url(:medium) %>
+# Will the style THUMB configured before
+# in your model
+<%= image_tag @user.selfie.url(:thumb) %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
