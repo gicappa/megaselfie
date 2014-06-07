@@ -1,0 +1,37 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= nested_form_for @selfie, :html => { :multipart => true } do |f| %>
+  <%# all your building fields .... %>
+
+  <%= f.fields_for :photos do |photo| %>
+    <% if photo.object.new_record? %>
+      <%= photo.file_field(:image) %>
+    <% else %>
+      <%= image_tag(photo.url(:thumb)) %>
+      <%= selfie.hidden_field :_destroy %>
+      <%= selfie.link_to_remove "X" %>
+    <% end %>
+  <% end %>
+
+  <p><%= f.link_to_add "Add selfie", :selfie %></p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
