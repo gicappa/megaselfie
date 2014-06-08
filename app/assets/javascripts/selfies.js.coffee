@@ -1,6 +1,6 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$ () ->
-  wall = new freewall("#selfies");
-  wall.fitWidth();
+# $ ()->
+#   wall = new freewall("#container");
+#   wall.fitWidth();
