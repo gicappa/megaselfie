@@ -1,4 +1,5 @@
 <strong>Name:</strong><%= @event.name %>
 <% @selfies.each do |selfie| %>
+    
     <%= image_tag selfie.image.url %>
 <% end %>
