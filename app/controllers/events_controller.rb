@@ -12,8 +12,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
 
-    @selfies = Selfie.all
-    @selfie = Selfie.all.first
+    @selfies = @event.selfies.order(created_at: :desc).all
   end
 
   # GET /events/new
